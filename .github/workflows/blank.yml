@@ -39,12 +39,14 @@ name:CI
       - 'FEATURE-[0-9]-[0-9]-[0-9]-X-BRANCH'
       - '[0-9]_[0-9]_x'
       - '[0-9]-[0-9]-X-BRANCH'
+      - test
   pull_request:
     branches:
       - master
       - 'FEATURE-[0-9]-[0-9]-[0-9]-X-BRANCH'
       - '[0-9]_[0-9]_x'
       - '[0-9]-[0-9]-X-BRANCH'
+      - test
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
