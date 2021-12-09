@@ -1,0 +1,105 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@mupadh 
+mupadh
+/
+spring-test
+Public
+1
+00
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+spring-test/.github/workflows/Spring.yml
+@mupadh
+mupadh Update Spring.yml
+Latest commit 36e8fc5 2 hours ago
+ History
+ 1 contributor
+73 lines (58 sloc)  1.9 KB
+   
+name:CI
+
+# Controls when the workflow will run
+  on: 
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+      - master
+      - 'FEATURE-[0-9]-[0-9]-[0-9]-X-BRANCH'
+      - '[0-9]_[0-9]_x'
+      - '[0-9]-[0-9]-X-BRANCH'
+  pull_request:
+    branches:
+      - master
+      - 'FEATURE-[0-9]-[0-9]-[0-9]-X-BRANCH'
+      - '[0-9]_[0-9]_x'
+      - '[0-9]-[0-9]-X-BRANCH'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    
+    steps:
+  # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+  
+  # check-out
+     - name: Checkout
+       uses: actions/checkout@v2.4.0
+       with:
+       repository: https://github.com/mupadh/spring-test.git
+      
+  # setup JDK
+     - name: set up JDK 11
+       uses: actions/setup-java@v2
+       with:
+          java-version: '11'
+          distribution: 'adopt'
+          cache: maven
+          
+  # Build Job with maven
+     - name: Build with maven
+       run: mvn -B package --file pom.xml
+          
+  # Upload Artifact
+     - name: 'Upload artifact '
+       uses: actions/upload-artifact@v2.2.4
+       with:
+     - name: test1
+       path: 
+  
+  
+  # Sonar Testing Scan
+     - name: SonarCloud Scan
+       uses: SonarSource/sonarcloud-github-action@v1.6
+  
+  
+     
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+
