@@ -1,60 +1,12 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@mupadh 
-mupadh
-/
-spring-test
-Public
-1
-00
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-spring-test/.github/workflows/Spring.yml
-@mupadh
-mupadh Update Spring.yml
-Latest commit 36e8fc5 2 hours ago
- History
- 1 contributor
-73 lines (58 sloc)  1.9 KB
+
+
    
-name:CI
-
-# Controls when the workflow will run
-  on: 
-  # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-      - master
-      - 'FEATURE-[0-9]-[0-9]-[0-9]-X-BRANCH'
-      - '[0-9]_[0-9]_x'
-      - '[0-9]-[0-9]-X-BRANCH'
-      - test
-  pull_request:
-    branches:
-      - master
-      - 'FEATURE-[0-9]-[0-9]-[0-9]-X-BRANCH'
-      - '[0-9]_[0-9]_x'
-      - '[0-9]-[0-9]-X-BRANCH'
-      - test
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
-  # This workflow contains a single job called "build"
-  build:
+  name:CI
+  on:[push]
+    
+  jobs:
+ 
+     build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
