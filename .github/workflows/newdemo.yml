@@ -6,11 +6,18 @@ on:
      branches:
       -test
       -main
+     tags:
+        -v1
+        -v1.*
+  
      
     pull_request:
      branches:
       -test
       -main
+     tags:
+        -v1
+        -v1.*
 
 jobs:
   build:
